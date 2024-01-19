@@ -1,0 +1,124 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Imóvel {{if(sku != None):}} {{= ' - ' + sku}} {{pass}}</h1>
+        </div>
+        <div class="col-md-8">
+            <a class="btn btn-primary btn-insert" href="{{=URL('imovel', 'index')}}">Voltar</a>
+        </div>
+    </div>
+    <br />
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            {{=form.custom.begin}}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Endereço: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.endereco}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Bairro: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.bairro}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Descrição: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.descricao}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Capa: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.capa}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Cidade: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.cidade_id}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">UF: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.uf_id}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Categoria: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.categoria_id}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Situação: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.situacao_id}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Tipo: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.tipo_id}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Valor: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.valor}}
+                        </div>
+                    </div>
+                </div>
+                <div>{{=form.custom.submit}}</div>
+            {{=form.custom.end}}
+        </div>
+    </div>
+</div>
+<hr />

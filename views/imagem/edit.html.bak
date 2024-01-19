@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <!-- Cadstro de cômodos -->
+            <h3>Editar infos de {{=image.title}}</h3>
+            <form method="post"
+                  action="{{=URL('imagem', 'edit_imagem/' + str(image.id))}}"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                       type="text"
+                                       id="desc"
+                                       name="descricao"
+                                       class="form-control"
+                                       value="{{=image.descricao}}"
+                                       placeholder="Informações básicas" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                   type="text"
+                                   id="alt"
+                                   name="alt"
+                                   class="form-control"
+                                       value="{{=image.alt}}"
+                                   placeholder="Texto alternativo" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                   type="text"
+                                   id="title"
+                                   name="title"
+                                   class="form-control"
+                                   value="{{=image.title}}"
+                                   placeholder="Título da imagem" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox"
+                                         class="custom-control-input"
+                                         id="capa"
+                                         value="{{=image.capa}}"
+                                         {{if(image.capa == True):}}
+                                             checked
+                                         {{pass}}
+                                         name="capa" required />
+                                  <label class="custom-control-label" for="capa">Capa?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="submit" value="Salvar" class="btn btn-primary" />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="imovel_id" id="imovel" value="{{=imovel_id}}"/>
+            </form>
+        </div>
+    </div>
+</div>

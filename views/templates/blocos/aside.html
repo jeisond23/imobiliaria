@@ -1,0 +1,7 @@
+<nav class="nav flex-column menu-asd">
+    {{for _item in response.aside:}}
+        <a class="nav-link" href="{{=_item[2]}}">
+            <span class="oi" data-glyph="{{=_item[3]}}"></span>  {{=_item[0]}}
+        </a>
+    {{pass}}
+</nav>

@@ -1,0 +1,75 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Imóveis</h1>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-primary btn-insert" href="{{=URL('imovel', 'insert/new')}}">Adicionar</a>
+        </div>
+    </div>
+    <br />
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark table-striped">
+                    <tr>
+                        <th scope="col">SKU</th>
+                        <th scope="col">DESCRIÇÃO</th>
+                        <th scope="col">CIDADE</th>
+                        <th scope="col">UF</th>
+                        <th scope="col">CATEGORIA</th>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">SITUACAO</th>
+                        <th scope="col">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{for i, row in enumerate(imoveis):}}
+                        {{if( i == items_per_page) : break}}
+                        <tr>
+                            <td>{{=row.imovel.sku}}</td>
+                            <td>{{=row.imovel.descricao}}</td>
+                            <td>{{=row.cidade.nome}}</td>
+                            <td>{{=row.uf.nome}}</td>
+                            <td>{{=row.categoria.nome}}</td>
+                            <td>{{=row.tipo.nome}}</td>
+                            <td>{{=row.situacao.nome}}</td>
+                            <td>
+                                <a class="acao" href="{{=URL('imovel', 'comodos/'+ str(row.imovel.id) + '/0')}}" title="Cômodos">
+                                    <span class="oi" data-glyph="dashboard"></span>
+                                </a>
+                                <a class="acao" href="{{=URL('imovel', 'delete/'+ str(row.imovel.id))}}" title="Excluir">
+                                    <span class="oi" data-glyph="trash"></span>
+                                </a>
+                                <a class="acao" href="{{=URL('imovel', 'insert/'+ str(row.imovel.id))}}" title="Editar">
+                                    <span class="oi" data-glyph="pencil"></span>
+                                </a>
+                                <a class="acao" href="{{=URL('imagem', 'index/'+ str(row.imovel.id))}}" title="Fotos">
+                                    <span class="oi" data-glyph="image"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {{pass}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <nav  aria-label="Navegação de imóveis">
+            <ul class="pagination">
+                {{if (page):}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{=URL(args=[page-1])}}">Anterior</a>
+                    </li>
+                {{pass}}
+                {{if(len(imoveis) > items_per_page):}}
+                    <li class="page-item"><a class="page-link" href="{{=URL(args=[page+1])}}">Próximo</a></li>
+                {{pass}}
+            </ul>
+        </nav>
+    </div>
+</div>

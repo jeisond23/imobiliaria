@@ -1,0 +1,126 @@
+timestamp: 2019-12-27T23:31:15.129329
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2019-12-27T23:31:15.250468
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2019-12-27T23:31:15.369190
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2019-12-27T23:31:15.482080
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2019-12-27T23:31:15.592762
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2019-12-27T23:31:15.693336
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2019-12-27T23:31:15.795090
+CREATE TABLE "categoria"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(30) UNIQUE
+);
+success!
+timestamp: 2019-12-27T23:31:15.905145
+CREATE TABLE "tipo"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(512)
+);
+success!
+timestamp: 2019-12-27T23:31:16.017236
+CREATE TABLE "situacao"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(512) UNIQUE
+);
+success!
+timestamp: 2019-12-27T23:31:16.129903
+CREATE TABLE "uf"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(2)
+);
+success!
+timestamp: 2019-12-27T23:31:16.244260
+CREATE TABLE "cidade"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(512),
+    "uf_id" INTEGER REFERENCES "uf" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2019-12-27T23:31:16.355010
+CREATE TABLE "imovel"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "sku" CHAR(120),
+    "endereco" CHAR(120),
+    "bairro" CHAR(40),
+    "descricao" TEXT,
+    "capa" CHAR(512),
+    "cidade_id" INTEGER REFERENCES "cidade" ("id") ON DELETE CASCADE  ,
+    "uf_id" INTEGER REFERENCES "uf" ("id") ON DELETE CASCADE  ,
+    "categoria_id" INTEGER REFERENCES "categoria" ("id") ON DELETE CASCADE  ,
+    "situacao_id" INTEGER REFERENCES "situacao" ("id") ON DELETE CASCADE  ,
+    "tipo_id" INTEGER REFERENCES "tipo" ("id") ON DELETE CASCADE  ,
+    "valor" CHAR(15)
+);
+success!
+timestamp: 2019-12-27T23:31:16.464459
+CREATE TABLE "comodo"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" CHAR(512)
+);
+success!
+timestamp: 2019-12-27T23:31:16.578827
+CREATE TABLE "imovel_comodo"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "imovel_id" INTEGER REFERENCES "imovel" ("id") ON DELETE CASCADE  ,
+    "comodo_id" INTEGER REFERENCES "comodo" ("id") ON DELETE CASCADE  ,
+    "observacao" TEXT
+);
+success!
+timestamp: 2019-12-27T23:31:16.689508
+CREATE TABLE "imagem"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descricao" CHAR(120),
+    "alt" CHAR(512),
+    "title" CHAR(512),
+    "src" CHAR(512),
+    "imovel_id" INTEGER REFERENCES "imovel" ("id") ON DELETE CASCADE  
+);
+success!

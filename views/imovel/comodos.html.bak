@@ -1,0 +1,92 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-5">
+            <h1>{{=sku}} - Comodos</h1>
+        </div>
+        <div class="col-md-7">
+            <a class="btn btn-info btn-insert" href="{{=URL('imovel', 'index')}}">Voltar</a>
+        </div>
+    </div>
+    <br />
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <!-- Cadstro de cômodos -->
+            <form method="post" action="{{=URL('imovel', 'in_comodos')}}">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input
+                                   type="text"
+                                   id="search"
+                                   name="search"
+                                   class="form-control"
+                                   placeholder="Informe o comodo para inserção" required />
+                            <div id="select"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" value="Salvar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <textarea id="observacao"
+                                    name="observacao"
+                                    class="form-control"
+                                    cols="50"
+                                    rows="10"
+                                    maxlength="140"
+                                    placeholder="Digite uma observação"
+                                    ></textarea>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="imovel_id" id="imovel" value="{{=imovel_id}}"/>
+                <input type="hidden" name="comodo_id" id="comodo" value=""/>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark table-striped">
+                    <tr>
+                        <th scope="col">CÔMODOS</th>
+                        <th scope="col">OBSERVAÇÃO</th>
+                        <th scope="col">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{for row in comodos:}}
+                        <tr>
+                            <td>{{=row.comodo.nome}}</td>
+                            <td>{{=row.imovel_comodo.observacao}}</td>
+                            <td>
+                                <a class="acao" href="{{=URL('imovel', 'exc_comodo/'+ str(row.imovel_comodo.id) + '/' + str(imovel_id))}}">
+                                    <span class="oi" data-glyph="trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {{pass}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{{=URL('static', 'js/modulos/comodos.js')}}"></script>

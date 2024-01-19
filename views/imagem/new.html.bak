@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <!-- Cadstro de cômodos -->
+            <h3>Adicionar Imagem e Infos</h3>
+            <form method="post"
+                  action="{{=URL('imagem', 'in_imagem')}}"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                       type="text"
+                                       id="desc"
+                                       name="descricao"
+                                       class="form-control"
+                                       placeholder="Informações básicas" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                   type="text"
+                                   id="alt"
+                                   name="alt"
+                                   class="form-control"
+                                   placeholder="Texto alternativo" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                   type="text"
+                                   id="title"
+                                   name="title"
+                                   class="form-control"
+                                   placeholder="Título da imagem" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox"
+                                         class="capa custom-control-input"
+                                         id="" value="True"
+                                         name="capa" required />
+                                  <label class="custom-control-label" for="capa">Capa?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input
+                                   type="file"
+                                   id="src"
+                                   name="src"
+                                   class="form-control"
+                                   placeholder="Carregar da imagem" required />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="submit" value="Salvar" class="btn btn-primary" />
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="imovel_id" id="imovel" value="{{=imovel_id}}"/>
+            </form>
+        </div>
+    </div>
+</div>

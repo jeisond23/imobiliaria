@@ -1,0 +1,2 @@
+/* Módulo de imagens */
+$('#capa').addClass('.capa');

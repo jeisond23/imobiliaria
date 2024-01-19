@@ -1,0 +1,70 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-5">
+            <h1>{{=sku}} - Fotos</h1>
+        </div>
+        <div class="col-md-7">
+            <a class="btn btn-info btn-insert" href="{{=URL('imovel', 'index')}}">Voltar</a>
+            {{if(acao != "new"):}}
+                <a class="btn btn-info btn-insert" href="{{=URL('imagem', 'index/' + str(imovel_id))}}">Adicionar</a>
+            {{pass}}
+        </div>
+    </div>
+    <br />
+</div>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+        </div>
+    </div>
+</div>
+{{if(acao == "new"):}}
+    {{include 'imagem/new.html'}}
+{{else:}}
+    {{ include 'imagem/edit.html' }}
+{{pass}}
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark table-striped">
+                    <tr>
+                        <th scope="col">IMAGEM</th>
+                        <th scope="col">DESCRIÇÃO</th>
+                        <th scope="col">TÍTULO</th>
+                        <th scope="col">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{for row in imagens:}}
+                        <tr>
+                            <td>
+                                <div class="card image-card border-dark">
+                                    <img src="{{=URL('download', args = row.src)}}"
+                                     alt="{{=row.alt}}"
+                                     title="{{=row.title}}"
+                                     class="card-img" />
+                                </div>
+                            </td>
+                            <td>{{=row.descricao}}</td>
+                            <td>{{=row.title}}</td>
+                            <td>
+                                <a class="acao" href="{{=URL('imagem', 'exc_image/'+ str(row.id) + '/' + str(imovel_id))}}">
+                                    <span class="oi" data-glyph="trash"></span>
+                                </a>
+                                <a class="acao" href="{{=URL('imagem', 'index/'+ str(imovel_id) + '/edit/' + str(row.id))}}">
+                                    <span class="oi" data-glyph="pencil"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {{pass}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

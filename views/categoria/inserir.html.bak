@@ -1,0 +1,23 @@
+{{extend 'templates/layout.html'}}
+<h1>Categorias</h1>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            {{=form.custom.begin}}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="label-conf">Nome: </label>
+                        </div>
+                        <div class="col-md-8">
+                            {{=form.custom.widget.nome}}
+                        </div>
+                        <div>{{=form.custom.submit}}</div>
+                    </div>
+                </div>
+
+            {{=form.custom.end}}
+        </div>
+    </div>
+</div>

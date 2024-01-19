@@ -1,0 +1,168 @@
+/*
+* CSS DASHBOARD
+*/
+
+@font-face {
+     font-family: Roboto-Regular;
+     src: url('font/Roboto-Regular.ttf');
+}
+
+@font-face {
+     font-family: Roboto-Black;
+     src: url('font/Roboto-Black.ttf');
+}
+
+* {
+	font-family: "Roboto-Regular";
+}
+
+body {
+  background-color: #EEEEE0;
+}
+
+.centraliza {
+    text-align: center;
+}
+
+.btn-2 {
+	color: black;
+}
+
+.btn-insert {
+    margin: 0.5rem 0 0 0.8rem;
+}
+
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.nav-top {
+	background-color: #828282;
+	margin-bottom: 1rem;
+	box-shadow: 0 2px 2px black ;
+}
+
+.dropdown-bg > a {
+	background-color: ;
+	color: black;
+}
+
+.icon-top {
+	padding-top: 0.5rem;
+	color: white;
+}
+
+.dash {
+	font-weight: bold;
+	padding: 0.2rem;
+}
+
+.dash:hover {
+	color: black;
+	background-color: white;
+}
+
+.menu-asd {
+	background-color: #343a40;
+	margin-bottom: 1rem;
+	width: 9.5rem;
+	box-shadow: 1px 1px 6px #828282, -1px -1px 6px #828282;
+	/* box-shadow: 1px 1px 3px black, -1px -1px 3px black; */
+}
+
+.menu-asd > a {
+	color: white;
+	width: 100%;
+}
+
+.menu-asd > a:hover {
+	color: black;
+	background-color: white;
+}
+
+.link-top {
+	color: white;
+	padding: 0.5rem;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.corpo {
+	width: 100%;
+	padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.rodape {
+	/* background-color: #828282; */
+	background-color: #343a40;
+	box-shadow: 0 -2px 2px black ;
+}
+
+.rod-emp {
+	color: white;
+	font-weight: bold;
+	padding: 0.9rem 0 0.3rem 0;
+	text-align: center;
+	font-size: 0.8rem;
+}
+
+.label-conf {
+    padding-top: 0.5rem;
+}
+
+.acao {
+    margin-left: 0.5rem;
+}
+
+#select {
+    margin-top: 0.2rem;
+}
+
+.image-card {
+    width: 10rem;
+    margin-left: 5rem;
+}
+
+.image-tab {
+    width: 10rem;
+}
+
+.capa {
+    background-color: blue;
+}
+
+.welcome {
+    text-align: center;
+    font-weight: bold;
+}
+
+.options {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.col > .acao {
+    padding-top: 2rem;
+}
+
+.bottom {
+    margin-bottom: 1rem;
+}
+
+.top-login {
+    padding-top: 2.3em;
+    padding-bottom: 0.5rem;
+}
+
+.login {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.logo {
+    width: 3rem;
+}

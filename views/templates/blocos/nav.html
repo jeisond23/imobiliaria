@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md nav-top fixed-top navbar-dark bg-dark">
+          <a class="navbar-brand icon-top dash" href="{{=URL('default', 'index')}}">
+              <span class="oi dash" data-glyph="home"></span>
+          </a>
+          <a class="navbar-brand icon-top dash" href="#" id="dash">
+              <span class="dash oi"  data-glyph="menu"> DASHBOARD</span>
+          </a>
+          <button class="navbar-toggler icon-top" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi" data-glyph="menu"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="navbar-nav mr-auto"></div>
+            <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
+            {{if 'auth' in globals():}}
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  {{if auth.user:}}
+                  <a class="dropdown-item" href="{{=URL('default','user/profile')}}">Perfil</a>
+                  {{if 'change_password' not in auth.settings.actions_disabled:}}
+                  <a class="dropdown-item" href="{{=URL('default','user/change_password')}}">Alterar Senha</a>
+                  {{pass}}
+                  <a class="dropdown-item" href="{{=URL('default','user/logout')}}">Sair</a>
+                  {{else:}}
+                  <a class="dropdown-item" href="{{=URL('default','user/login')}}">{{=T('Login')}}</a>
+                      {{if 'register' not in auth.settings.actions_disabled:}}
+                      <a class="dropdown-item" href="{{=URL('default','user/register')}}">Cadastrar</a>
+                      {{pass}}
+                      {{if 'retrieve_password' not in auth.settings.actions_disabled:}}
+                      <a class="dropdown-item" href="{{=URL('default','user/retrieve_password')}}">Recuperar Senha</a>
+                      {{pass}}
+                  {{pass}}
+                </div>
+              </li>
+            </ul>
+            {{pass}}
+          </div>
+        </nav>

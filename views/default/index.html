@@ -1,0 +1,123 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="welcome">BEM VINDO A GESTÃO DE IMÓVEIS!!!</h1>
+        </div>
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <div class="row bottom">
+        <div class="col-md-12">
+            <h3>Cadastros:</h3>
+        </div>
+    </div>
+    <div class="row bottom">
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('situacao', 'insert/new')}}">Situações</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('categoria', 'insert/new')}}">Categorias</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('uf', 'insert/new')}}">UFs</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('cidade', 'insert/new')}}">Cidades</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('comodo', 'insert/new')}}">Cômodos</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="{{=URL('tipo', 'insert/new')}}">Tipos</a>
+        </div>
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input type="text"
+                                   name="sku"
+                                   id="sku"
+                                   placeholder="Pesquisar por SKU"
+                                   class="form-control"
+                                   list="skus"/>
+                            <datalist id="skus">
+                            </datalist>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" value="Pesquisar" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-columns">
+                {{for row in imoveis:}}
+                    <div class="card">
+                        <img class="card-img-top" alt="{{=row.imovel.sku}}" src="{{=URL('download', args = row.imovel.capa)}}"/>
+                        <div class="card-body">
+                            <div class="row options">
+                                <div class="col">
+                                    <a class="btn btn-info"
+                                       href="{{=URL('imovel', 'insert/'+ str(row.imovel.id))}}"
+                                       title="Editar: {{=row.imovel.sku}}">
+                                        SKU: {{=row.imovel.sku}}
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="acao" href="{{=URL('imovel', 'comodos/'+ str(row.imovel.id) + '/0')}}" title="Cômodos">
+                                        <span class="oi" data-glyph="dashboard"></span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="acao" href="{{=URL('imagem', 'index/'+ str(row.imovel.id))}}" title="Fotos">
+                                        <span class="oi" data-glyph="image"></span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="acao" href="{{=URL('imovel', 'delete/'+ str(row.imovel.id))}}" title="Excluir">
+                                        <span class="oi" data-glyph="trash"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="card-text">Cidade: {{=row.cidade.nome}}</p>
+                            <p class="card-text">Categoria: {{=row.categoria.nome}}</p>
+                            <p class="card-text">Tipo: {{=row.tipo.nome}}</p>
+                            <p class="card-text">Situação: {{=row.situacao.nome}}</p>
+                            <p class="card-text">Valor: {{=row.imovel.valor}}</p>
+                        </div>
+                    </div>
+                {{pass}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <nav  aria-label="Navegação de categorias">
+            <ul class="pagination">
+                {{if (page):}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{=URL(args=[page-1])}}">Anterior</a>
+                    </li>
+                {{pass}}
+                {{if(len(imoveis) > items_per_page):}}
+                    <li class="page-item"><a class="page-link" href="{{=URL(args=[page+1])}}">Próximo</a></li>
+                {{pass}}
+            </ul>
+        </nav>
+    </div>
+</div>

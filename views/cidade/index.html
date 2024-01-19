@@ -1,0 +1,59 @@
+{{extend 'templates/layout.html'}}
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Cidades</h1>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-primary btn-insert" href="{{=URL('cidade', 'insert/new')}}">Adicionar</a>
+        </div>
+    </div>
+    <br />
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark table-striped">
+                    <tr>
+                        <th scope="col">NOME</th>
+                        <th scope="col">UF</th>
+                        <th scope="col">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{for i, row in enumerate(cidades):}}
+                        {{if( i == items_per_page) : break}}
+                        <tr>
+                            <td>{{=row.cidade.nome}}</td>
+                            <td>{{=row.uf.nome}}</td>
+                            <td>
+                                <a class="acao" href="{{=URL('cidade', 'delete/'+ str(row.cidade.id))}}">
+                                    <span class="oi" data-glyph="trash"></span>
+                                </a>
+                                <a class="acao" href="{{=URL('cidade', 'insert/'+ str(row.cidade.id))}}">
+                                    <span class="oi" data-glyph="pencil"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {{pass}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <nav  aria-label="Navegação de cidades">
+            <ul class="pagination">
+                {{if (page):}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{=URL(args=[page-1])}}">Anterior</a>
+                    </li>
+                {{pass}}
+                {{if(len(cidades) > items_per_page):}}
+                    <li class="page-item"><a class="page-link" href="{{=URL(args=[page+1])}}">Próximo</a></li>
+                {{pass}}
+            </ul>
+        </nav>
+    </div>
+</div>
